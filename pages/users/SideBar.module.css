@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Poppins&display=swap');
+
+.sidebarContainer {
+    width: 12%;
+    height: 100vh;
+    background-color: #9eb4d6;
+    position: absolute;
+    left: 0;
+    padding-top: 60px;
+    font-family: "Poppins";
+}
+
+.listContainer {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.listContainer li {
+    position: relative;
+    margin: 20px;
+    font-size: 20px;
+    color: rgb(3, 3, 4);
+}
+
+.listContainer li:hover {
+    background-color: #f0f0f0;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+  }
+
+.listContainer img {
+    padding-right: 12px;
+}

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Poppins&display=swap');
+
+.navbar{
+    background-color: #607EAA;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 7vh;
+    z-index: 10;
+}
+.navbarSvg1 {
+    display: inline;
+    position: absolute;
+    right: 2%;
+    margin-top: 8px;
+}
+
+.navbarSvg2 {
+    display: inline;
+    position: absolute;
+    right: 5%;
+    margin-top: 8px;
+}
+
+.logo{
+    color: white;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    display: inline-block;
+    margin: 5px 3px;
+}
+
