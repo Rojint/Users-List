@@ -1,7 +1,6 @@
-import { LineStyle } from "@material-ui/icons";
 import Head from "next/head";
 import Link from "next/link";
-import Styles from './SideBar.module.css'
+import Styles from '../Styles/SideBar.module.css';
 
 export default function SideBar() {
     return (
