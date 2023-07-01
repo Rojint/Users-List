@@ -1,22 +1,23 @@
-import { RequestParam, User } from '..';
-import Styles from '../Styles/table.module.css'
+import { TableBody, TableCell, TableRow } from "@mui/material";
+import { RequestParam, User } from "..";
+import Styles from "../Styles/table.module.css";
 
 interface Props {
- user : User
-
+  user: User;
 }
-const Table = ({user}: Props) => {
+const Table = ({ user }: Props) => {
   return (
-      <tbody>
-        <tr>
-          <td><img className={Styles.avatar} src={user.avatarUrl} /></td>
-          <td>{user.firstName}</td>
-          <td>{user.lastName}</td>
-          <td>{user.nationalCode}</td>
-        </tr>
-      </tbody>
+    <TableBody>
+      <TableRow>
+        <TableCell>
+          <img className={Styles.avatar} src={user.avatarUrl} />
+        </TableCell>
+        <TableCell>{user.firstName}</TableCell>
+        <TableCell>{user.lastName}</TableCell>
+        <TableCell>{user.nationalCode}</TableCell>
+      </TableRow>
+    </TableBody>
   );
 };
 
 export default Table;
-

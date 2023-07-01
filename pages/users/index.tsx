@@ -1,9 +1,17 @@
 import Navbar from "./Components/NavBar";
 import SideBar from "./Components/SideBar";
-import Styles from './users.module.css'
+import Styles from "./users.module.css";
 import Table from "./Components/Table";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import {
+  Container,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 
 export interface RequestParam {
   id: boolean;
@@ -17,21 +25,21 @@ export interface User {
   id: number;
   firstName: string;
   lastName: string;
-  avatarUrl: string
+  avatarUrl: string;
   nationalCode: string;
 }
 
-
-const fetchUser = async () => {  
+const fetchUser = async () => {
   try {
-    const response = await axios.get("https://maja.hoitek.fi/api/v1/users?page=1&limit=10");
-    console.log(response.data.data.items)
+    const response = await axios.get(
+      "https://maja.hoitek.fi/api/v1/users?page=1&limit=10"
+    );
     return response.data.data.items;
   } catch (e) {
     console.log(e);
     return [];
   }
-}
+};
 export default function Users() {
   const [users, setUsers] = useState<User[]>([]);
 
@@ -39,30 +47,31 @@ export default function Users() {
     fetchUser().then((data) => setUsers(data));
   }, []);
 
-  return(
+  return (
     <>
       <Navbar />
       <SideBar />
-      <section className={Styles["users-container"]}>            
-        <div className={Styles["users-list"]}>
-          <h2 className={Styles["users-title"]}>Users</h2>
+      <Container className={Styles["users-container"]}>
+        <Container className={Styles["users-list"]}>
+          <Typography variant="h4" className={Styles["users-title"]}>
+            Users
+          </Typography>
 
-          <table className={Styles.table}>
-      <thead>
-        <tr className={Styles.table}>
-          <th>Photo</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>National Code</th>
-        </tr>
-      </thead>
-      {users && users.map((user) => (
-  <Table user={user} key={user.id} />
-))}
-    </table>
-          
-        </div>
-      </section>
+          <TableContainer className={Styles.table}>
+            <TableHead>
+              <TableRow className={Styles.table}>
+                <TableCell>Photo</TableCell>
+                <TableCell>First Name</TableCell>
+                <TableCell>Last Name</TableCell>
+                <TableCell>National Code</TableCell>
+              </TableRow>
+            </TableHead>
+            {users.map((user) => (
+              <Table user={user} key={user.id} />
+            ))}
+          </TableContainer>
+        </Container>
+      </Container>
     </>
-  )
+  );
 }
