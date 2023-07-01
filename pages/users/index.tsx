@@ -5,6 +5,7 @@ import Table from "./Components/Table";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import {
+  CircularProgress,
   Container,
   TableCell,
   TableContainer,
@@ -12,6 +13,7 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import Loading from "./Loading";
 
 export interface RequestParam {
   id: boolean;
@@ -36,15 +38,20 @@ const fetchUser = async () => {
     );
     return response.data.data.items;
   } catch (e) {
-    console.log(e);
     return [];
   }
 };
 export default function Users() {
   const [users, setUsers] = useState<User[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetchUser().then((data) => setUsers(data));
+    setIsLoading(true);
+
+    fetchUser().then((data) => {
+      setUsers(data);
+      setIsLoading(false);
+    });
   }, []);
 
   return (
@@ -66,9 +73,15 @@ export default function Users() {
                 <TableCell>National Code</TableCell>
               </TableRow>
             </TableHead>
-            {users.map((user) => (
-              <Table user={user} key={user.id} />
-            ))}
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <>
+                {users.map((user) => (
+                  <Table user={user} key={user.id} />
+                ))}
+              </>
+            )}
           </TableContainer>
         </Container>
       </Container>
