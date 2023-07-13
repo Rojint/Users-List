@@ -5,7 +5,6 @@ import Table from "./Components/Table";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import {
-  CircularProgress,
   Container,
   TableCell,
   TableContainer,
@@ -63,7 +62,6 @@ export default function Users() {
           <Typography variant="h4" className={Styles["users-title"]}>
             Users
           </Typography>
-
           <TableContainer className={Styles.table}>
             <TableHead>
               <TableRow className={Styles.table}>
